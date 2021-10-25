@@ -1,0 +1,29 @@
+version: '2.1'
+orbs:
+  aws-s3: circleci/aws-s3@3.0
+jobs:
+  test:
+    docker:
+      - image: 'circleci/node:12.9.1-browsers'
+    steps:
+      - checkout
+      - run: npm install && npm run test
+  build:
+    docker:
+      - image: 'circleci/node:12.9.1-browsers'
+    steps:
+      - checkout
+      - run: npm install && npm run build
+      - aws-s3/sync:
+          arguments: |
+            --acl public-read \
+            --cache-control "max-age=86400"
+          from: bucket
+          to: 's3://my-s3-bucket-name/prefix'
+workflows:
+  test-build-deploy:
+    jobs:
+      - test
+      - build:
+          requires:
+            - test
