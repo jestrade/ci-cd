@@ -26,7 +26,7 @@ workflows:
       - test
       - build:
           requires:
-            - test:
+            - test
           filters:
             branches:
               only:
