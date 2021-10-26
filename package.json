@@ -15,6 +15,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "e2e": "testcafe",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -34,5 +35,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/testcafe": "^4.4.0",
+    "testcafe": "^1.16.1"
   }
 }

@@ -1,0 +1,9 @@
+{
+    "clientScripts": [
+    { "module": "@testing-library/dom/dist/@testing-library/dom.umd.js" }
+  ],
+  "src": "src/__e2e__/*.e2e.js",
+  "browsers": [
+      "chrome"
+  ]
+}
